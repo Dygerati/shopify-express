@@ -2,37 +2,37 @@
   "name": "@shopify/shopify-express",
   "version": "1.0.0",
   "author": "Shopify Inc.",
-  "description": "Get up and running quickly with Express.js and the Shopify API.",
-  "keywords": [
-    "shopify",
-    "express.js",
-    "express middleware"
-  ],
+  "description":
+    "Get up and running quickly with Express.js and the Shopify API.",
+  "keywords": ["shopify", "express.js", "express middleware"],
   "bugs": "https://github.com/Shopify/shopify-express/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Shopify/shopify-express.git"
   },
-  "engines": {
-    "node": ">=8.1.0"
-  },
+  "main": "build/index.js",
   "scripts": {
-    "prettier:check": "prettier-check --single-quote --trailing-comma=all {middleware,routes,shopStore}{/*,/**/*}.{js}",
-    "prettier:fix": "prettier --single-quote --trailing-comma=all --write {middleware,routes,shopStore}{/*,/**/*}.{js}",
+    "prettier:check":
+      "prettier-check --single-quote --trailing-comma=all {middleware,routes,shopStore}{/*,/**/*}.{js}",
+    "prettier:fix":
+      "prettier --single-quote --trailing-comma=all --write {middleware,routes,shopStore}{/*,/**/*}.{js}",
     "precommit": "lint-staged",
     "test": "jest",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "babel": "babel src --out-dir build",
+    "postinstall": "npm run-script babel"
   },
   "lint-staged": {
-    "*.{js}": [
-      "prettier:check"
-    ]
+    "*.{js}": ["prettier:check"]
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.2",
     "connect-redis": "^3.3.0",
     "express": "^4.16.2",
