@@ -9,7 +9,7 @@ module.exports = function createShopifyAuthRoutes({
   scope,
   afterAuth,
   shopStore,
-  accessMode,
+  accessMode
 }) {
   return {
     // This function initializes the Shopify OAuth Process
@@ -42,7 +42,7 @@ module.exports = function createShopifyAuthRoutes({
               window.top.location.href = "${redirectTo}?${querystring.stringify(redirectParams)}"
             </script>
           </head>
-        </html>`,
+        </html>`
       );
     },
 
@@ -74,7 +74,7 @@ module.exports = function createShopifyAuthRoutes({
       const requestBody = querystring.stringify({
         code,
         client_id: apiKey,
-        client_secret: secret,
+        client_secret: secret
       });
 
       const remoteResponse = await fetch(`https://${shop}/admin/oauth/access_token`, {
@@ -83,7 +83,7 @@ module.exports = function createShopifyAuthRoutes({
           'Content-Type': 'application/x-www-form-urlencoded',
           'Content-Length': Buffer.byteLength(requestBody),
         },
-        body: requestBody,
+        body: requestBody
       });
 
       const responseBody = await remoteResponse.json();
